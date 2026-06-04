@@ -25,7 +25,7 @@ def latih_model_ci():
     pipeline.fit(X_train, y_train)
     print("Pelatihan selesai.")
 
-    artifact_path = "model_artifact"
+    artifact_path = "model_dir"
     if os.path.exists(artifact_path):
         shutil.rmtree(artifact_path)
 
