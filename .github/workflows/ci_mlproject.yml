@@ -25,7 +25,7 @@ jobs:
 
     - name: Run MLflow Project
       run: |
-        cd Workflow-CI/MLProject
+        cd MLProject
         mlflow run . --env-manager=local
 
     - name: Commit Artifacts to GitHub
@@ -33,7 +33,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git pull origin main --rebase
-        git add Workflow-CI/MLProject/model_artifact/
+        git add MLProject/model_artifact/
         git commit -m "Auto-save model artifact from CI [skip ci]" || echo "Tidak ada perubahan artefak"
         git push
 
@@ -45,7 +45,7 @@ jobs:
 
     - name: Build Docker Image using MLflow
       run: |
-        cd Workflow-CI/MLProject
+        cd MLProject
         mlflow models build-docker -m model_artifact -n ${{ secrets.DOCKER_USERNAME }}/sentimen-shopee:latest
 
     - name: Push Docker Image to Docker Hub
