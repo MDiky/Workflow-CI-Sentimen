@@ -2,8 +2,8 @@ name: CI MLProject & Docker Build
 
 on:
   push:
-    paths:
-      - 'Workflow-CI/**'
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
